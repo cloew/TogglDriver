@@ -1,3 +1,4 @@
+from ..config import GlobalConfig
 
 class StoreApiToken:
     """ Represents a command to store the global Api Token for connecting to Toggl """
@@ -13,4 +14,4 @@ class StoreApiToken:
         
     def store(self, token):
         """ Store the token """
-        pass
+        GlobalConfig.storeToken(token)
