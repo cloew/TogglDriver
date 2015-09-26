@@ -1,8 +1,11 @@
+#!/usr/bin/python
+from toggl_driver import TogglDriver
+
 import sys
 
 def main(args):
     """ Run the main file """
-    # Add logic to main
+    TogglDriver('toggl').run(args)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+	main(sys.argv[1:])
