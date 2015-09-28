@@ -22,8 +22,8 @@ class LocalConfig:
         """ Return the stored project """
         return GlobalConfig.connection.projects.withId(self.pid)
             
-    def storeProjectId(self, id):
-        """ Store the provided id """
-        return self.config.write(id)
+    def storeProject(self, project):
+        """ Store the provided project """
+        return self.config.write(str(project.id))
             
 LocalConfig = LocalConfig()
