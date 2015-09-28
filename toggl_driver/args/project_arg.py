@@ -11,8 +11,4 @@ class ProjectArg(FlagArg):
     def getValue(self, args):
         """ Return the value from the args """
         projectName = FlagArg.getValue(self, args)
-        if projectName is None:
-            project = LocalConfig.project
-        else:
-            project = GlobalConfig.connection.projects.withName(projectName).first
-        return project
+        return GlobalConfig.connection.projects.withName(projectName).first

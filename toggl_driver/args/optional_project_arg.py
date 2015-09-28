@@ -1,5 +1,6 @@
 from .project_arg import ProjectArg
 from .workspace_arg import WorkspaceArg
+from ..config import LocalConfig
 
 class OptionalProjectArg:
     """ Represents an optional Project/Workspace Argument """
@@ -20,5 +21,9 @@ class OptionalProjectArg:
         """ Return the value from the args """
         projectArgName, project = self.projectArg.getPair(args)
         if project is None:
-            return self.workspaceArg.getPair(args)
+            workspaceArgName, workspace = self.workspaceArg.getPair(args)
+            if workspace is None:
+                return projectArgName, LocalConfig.project
+            else:
+                return workspaceArgName, workspace
         return projectArgName, project
