@@ -5,5 +5,6 @@ setup(name='toggl_driver',
       description="",
       author='',
       author_email='',
-      packages=['toggl_driver'],
+      packages=['toggl_driver', 'toggl_driver.args', 'toggl_driver.commands', 'toggl_driver.config'],
+      scripts=['toggl_driver/scripts/toggl']
      )
