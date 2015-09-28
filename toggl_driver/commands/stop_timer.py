@@ -1,7 +1,7 @@
 from ..config import GlobalConfig
 
 class StopTimer:
-    """ Represents a command to start the Toggl Timer """
+    """ Represents a command to stop the Toggl Timer """
     description = "Stop the Toggl Timer"
     args = []
     
