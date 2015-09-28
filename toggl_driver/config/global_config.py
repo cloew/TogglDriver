@@ -14,7 +14,7 @@ class GlobalConfig:
     @lazy_property
     def tokenFilename(self):
         """ Return the global config filename """
-        return self.configDir.getFile(self.TOKEN_FILENAME, create=True)
+        return self.configDir.getFilename(self.TOKEN_FILENAME, create=True)
     
     @lazy_property
     def token(self):
