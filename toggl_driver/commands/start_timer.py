@@ -1,10 +1,15 @@
 from ..args import WorkspaceArg
+from ..config import GlobalConfig
+
+from kao_command.args import Arg, BareWords
 
 class StartTimer:
     """ Represents a command to start the Toggl Timer """
     description = "Start the Toggl Timer"
-    args = [WorkspaceArg(help="The Workspace to start the timer within")]
+    args = [Arg('description', nargs='+', provider=BareWords),
+            WorkspaceArg(help="The Workspace to start the timer within")]
     
-    def run(self, *, workspace):
+    def run(self, *, description, workspace):
         """ Start the timer """
-        print(workspace)
+        entry = GlobalConfig.connection.TimeEntry(description=description, wid=workspace.id)
+        entry.start()
