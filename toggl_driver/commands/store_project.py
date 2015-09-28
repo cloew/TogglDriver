@@ -10,6 +10,10 @@ class StoreProject:
         """ Run the command """
         project = GlobalConfig.connection.projects.withName(name).first
         if project:
-            LocalConfig.storeProject(project)
+            self.store(project)
         else:
             print("Unknown Project: {0}".format(name))
+            
+    def store(self, project):
+        """ Store the provided project """
+        LocalConfig.storeProject(project)
