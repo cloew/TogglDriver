@@ -20,7 +20,10 @@ class LocalConfig:
     @lazy_property
     def project(self):
         """ Return the stored project """
-        return GlobalConfig.connection.projects.withId(self.pid)
+        if self.pid is not '':
+            return GlobalConfig.connection.projects.withId(self.pid)
+        else:
+            return None
             
     def storeProject(self, project):
         """ Store the provided project """

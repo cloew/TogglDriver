@@ -1,4 +1,4 @@
-from ..config import GlobalConfig
+from ..config import GlobalConfig, LocalConfig
 from kao_command.args import FlagArg
 
 class ProjectArg(FlagArg):
@@ -11,4 +11,8 @@ class ProjectArg(FlagArg):
     def getValue(self, args):
         """ Return the value from the args """
         projectName = FlagArg.getValue(self, args)
-        return GlobalConfig.connection.projects.withName(projectName).first
+        if projectName is None:
+            project = LocalConfig.project
+        else:
+            project = GlobalConfig.connection.projects.withName(projectName).first
+        return project
