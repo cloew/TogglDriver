@@ -13,12 +13,10 @@ class GlobalConfig:
     @lazy_property
     def token(self):
         """ Return the global config Api Token """
-        with open(self.config.path, 'r') as file:
-            return file.readlines()[0].strip()
+        return self.config.readlines()[0].strip()
             
     def storeToken(self, token):
         """ Store the provided token """
-        with open(self.config.path, 'w') as file:
-            return file.write(token)
+        return self.config.write(token)
             
 GlobalConfig = GlobalConfig()
