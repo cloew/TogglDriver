@@ -10,4 +10,5 @@ class WorkspaceArg(FlagArg):
     
     def getValue(self, args):
         """ Return the value from the args """
-        return GlobalConfig.connection.workspaces.findByName(args.workspace)
+        workspaceName = FlagArg.getValue(self, args)
+        return GlobalConfig.connection.workspaces.findByName(workspaceName)
