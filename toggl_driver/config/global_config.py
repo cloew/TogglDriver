@@ -1,5 +1,6 @@
 from kao_config import GlobalConfigFile
 from kao_decorators import lazy_property
+from pytoggl import TogglConnection
 
 class GlobalConfig:
     """ Represents the global Toggl Driver Configuration """
@@ -18,5 +19,10 @@ class GlobalConfig:
     def storeToken(self, token):
         """ Store the provided token """
         return self.config.write(token)
+    
+    @lazy_property
+    def connection(self):
+        """ Return the Toggl Connection """
+        return TogglConnection(self.token)
             
 GlobalConfig = GlobalConfig()
